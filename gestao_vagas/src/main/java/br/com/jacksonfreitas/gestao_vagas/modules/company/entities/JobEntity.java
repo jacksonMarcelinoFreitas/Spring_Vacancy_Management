@@ -12,10 +12,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity(name = "job")
 @Data
+@Builder // ao criar um builder necessita-se especificar a notation para construtores com todos os args e vazio
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobEntity {
 
   @Id
@@ -37,4 +43,3 @@ public class JobEntity {
 
 }
 
-//fluxo - n

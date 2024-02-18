@@ -4,14 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.jacksonfreitas.gestao_vagas.exceptions.UserFoundException;
-import br.com.jacksonfreitas.gestao_vagas.modules.candidates.CandidateEntity;
-import br.com.jacksonfreitas.gestao_vagas.modules.candidates.CandidateRepository;
+import br.com.jacksonfreitas.gestao_vagas.modules.candidates.entities.CandidateEntity;
+import br.com.jacksonfreitas.gestao_vagas.modules.candidates.repositories.CandidateRepository;
 
 @Service
 public class CreateCandidateUseCase {
 
   @Autowired
   private CandidateRepository candidateRepository;
+  
   public CandidateEntity execute(CandidateEntity candidateEntity){
     this.candidateRepository
     .findByUsernameOrEmail(candidateEntity.getUsername(), candidateEntity.getEmail())

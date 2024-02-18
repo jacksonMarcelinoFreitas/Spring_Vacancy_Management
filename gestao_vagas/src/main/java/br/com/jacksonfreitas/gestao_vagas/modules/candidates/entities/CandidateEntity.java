@@ -1,5 +1,5 @@
 //classe reponsável por receber os dados vindos das requisiçoes;
-package br.com.jacksonfreitas.gestao_vagas.modules.candidates;
+package br.com.jacksonfreitas.gestao_vagas.modules.candidates.entities;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -30,7 +30,7 @@ public class CandidateEntity {
   @Email(message = "O campo [email] deve conter um e-mail válido.")
   private String email;
 
-  @Length(min = 8, max = 20, message = "A senha deve conter entre 8 e 20 carcteres.")
+  @Length(min = 8, max = 200, message = "A senha deve conter entre 8 e 20 carcteres.")
   private String password;
 
   private String description;

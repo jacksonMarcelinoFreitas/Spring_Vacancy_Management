@@ -22,6 +22,7 @@ public class CompanyEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
+
   private String name;
 
   @Email(message = "O campo [email] deve conter um e-mail válido")
@@ -31,7 +32,7 @@ public class CompanyEntity {
   @Pattern(regexp = "\\S+", message = "O campo [username] não deve conter espaços")
   private String username;
 
-  @Length(min = 8, max = 20, message = "A senha deve conter entre 8 e 20 caracteres")
+  @Length(min = 8, max = 200, message = "A senha deve conter entre 8 e 20 caracteres")
   private String password;
 
   private String website;
