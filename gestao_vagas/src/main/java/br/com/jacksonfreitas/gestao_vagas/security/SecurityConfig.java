@@ -15,16 +15,21 @@ public class SecurityConfig {
     @Autowired
     private SecurityFilter securityFilter;
 
+    @Autowired
+    private SecurityCandidateFilter securityCandidateFilter;
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth ->{
                 auth.requestMatchers("/candidate/").permitAll()
                     .requestMatchers("/company/").permitAll()
-                    .requestMatchers("/auth/company").permitAll();
+                    .requestMatchers("/auth/company").permitAll()
+                    .requestMatchers("/candidate/auth").permitAll();
                 auth.anyRequest().authenticated();
             })
             .addFilterBefore(securityFilter, BasicAuthenticationFilter.class)
+            .addFilterBefore(securityCandidateFilter, BasicAuthenticationFilter.class)
         ;
         return http.build();
     }
@@ -38,3 +43,5 @@ public class SecurityConfig {
 
 //classe de configs a serem consideradas ao startar a aplicação
 // @Bean -> indica que o método está sendo sobrescrito
+// ao configurar o bean retornando BCryptPasswordEncoder(), sobrescrevemos o método
+// que provavelmente retornaria outra forma de encriptação

@@ -29,11 +29,11 @@ public class JobController {
       // jobEntity.setCompanyId(UUID.fromString(companyId.toString()));
 
       var jobEntity = JobEntity.builder()
-      .benefits(createJobDTO.getBenefits())
-      .companyId(UUID.fromString(companyId.toString()))
-      .description(createJobDTO.getDescription())
-      .level(createJobDTO.getLevel())
-      .build(); // ao escrever o build cria-se uma nova instancia do objeto
+        .benefits(createJobDTO.getBenefits())
+        .companyId(UUID.fromString(companyId.toString()))
+        .description(createJobDTO.getDescription())
+        .level(createJobDTO.getLevel())
+        .build(); // ao escrever o build cria-se uma nova instancia do objeto
 
       return this.createJobUseCase.execute(jobEntity);
   }
